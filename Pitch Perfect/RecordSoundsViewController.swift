@@ -31,9 +31,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let recordingName = "my_audio.m4a"
-        // let filePath = URL(fileURLWithPath: recordingName)
         let filePath = getDocumentsDirectory().appendingPathComponent(recordingName)
         
         let session = AVAudioSession.sharedInstance()

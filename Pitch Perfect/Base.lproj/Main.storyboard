@@ -41,8 +41,9 @@
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LHd-E4-MUP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUI-3k-yNd">
-                                <rect key="frame" x="139" y="392" width="99" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to record!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUI-3k-yNd">
+                                <rect key="frame" x="96" y="409" width="184" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.2196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.9501558402421344" green="1" blue="0.9663689980290644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,9 +56,7 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="og0-19-2Vc" secondAttribute="centerX" id="3MR-Pa-yD7"/>
                             <constraint firstAttribute="centerY" secondItem="og0-19-2Vc" secondAttribute="centerY" id="Afb-KQ-aLQ"/>
-                            <constraint firstAttribute="centerY" secondItem="WUI-3k-yNd" secondAttribute="centerY" constant="-66.5" id="FCh-tR-v5T"/>
-                            <constraint firstItem="WUI-3k-yNd" firstAttribute="trailing" secondItem="og0-19-2Vc" secondAttribute="trailing" id="SrO-Yt-zAV"/>
-                            <constraint firstItem="SJH-2p-3b2" firstAttribute="centerX" secondItem="WUI-3k-yNd" secondAttribute="centerX" id="h5O-gg-raB"/>
+                            <constraint firstItem="SJH-2p-3b2" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sc5-NV-tXG"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SJH-2p-3b2" secondAttribute="bottom" constant="70" id="zNS-nO-bOy"/>
                         </constraints>
                         <variation key="default">
@@ -69,8 +68,6 @@
                             <mask key="constraints">
                                 <exclude reference="3MR-Pa-yD7"/>
                                 <exclude reference="Afb-KQ-aLQ"/>
-                                <exclude reference="FCh-tR-v5T"/>
-                                <exclude reference="h5O-gg-raB"/>
                                 <exclude reference="zNS-nO-bOy"/>
                             </mask>
                         </variation>
@@ -83,8 +80,6 @@
                             <mask key="constraints">
                                 <include reference="3MR-Pa-yD7"/>
                                 <include reference="Afb-KQ-aLQ"/>
-                                <include reference="FCh-tR-v5T"/>
-                                <include reference="h5O-gg-raB"/>
                                 <include reference="zNS-nO-bOy"/>
                             </mask>
                         </variation>
@@ -99,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="676.5"/>
+            <point key="canvasLocation" x="1644" y="676.01199400299856"/>
         </scene>
         <!--Play Sounds View Controller-->
         <scene sceneID="QsS-UL-5ha">
@@ -189,6 +184,15 @@
                                     <action selector="playEcho:" destination="K5o-In-MRh" eventType="touchUpInside" id="QpG-YC-Ikm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ty-zE-7t3">
+                                <rect key="frame" x="107" y="494" width="161" height="30"/>
+                                <state key="normal" title="Play chipmunk in space">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="playMixEffects:" destination="K5o-In-MRh" eventType="touchUpInside" id="Yv2-4a-MeB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25724369788264195" green="0.58209471380326006" blue="0.94858743690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -201,9 +205,11 @@
                             </constraint>
                             <constraint firstItem="pGG-uR-sL5" firstAttribute="top" secondItem="quV-Uo-pLD" secondAttribute="bottom" constant="40" id="PXM-cE-lRv"/>
                             <constraint firstItem="quV-Uo-pLD" firstAttribute="top" secondItem="GKt-kf-XOM" secondAttribute="bottom" constant="20" id="Qn6-sP-kWw"/>
+                            <constraint firstItem="5Ty-zE-7t3" firstAttribute="centerX" secondItem="hYP-6t-vFU" secondAttribute="centerX" id="SRD-0t-9ly"/>
                             <constraint firstItem="baz-I4-f0Q" firstAttribute="top" secondItem="GKt-kf-XOM" secondAttribute="bottom" constant="20" id="bzh-WS-fJu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="43l-Ws-6Rh" secondAttribute="trailing" constant="35" id="dKK-El-OJL"/>
                             <constraint firstItem="43l-Ws-6Rh" firstAttribute="top" secondItem="0OS-lw-Cyr" secondAttribute="bottom" constant="36" id="eF3-rJ-Kit"/>
+                            <constraint firstItem="wTb-qR-KA6" firstAttribute="top" secondItem="5Ty-zE-7t3" secondAttribute="bottom" constant="143" id="exB-1Q-Eu1"/>
                             <constraint firstItem="pGG-uR-sL5" firstAttribute="leading" secondItem="quV-Uo-pLD" secondAttribute="leading" id="mGe-iV-Tfl"/>
                             <constraint firstItem="ASZ-g3-XMV" firstAttribute="centerX" secondItem="hYP-6t-vFU" secondAttribute="centerX" id="phI-g3-m6o"/>
                             <constraint firstItem="wTb-qR-KA6" firstAttribute="top" secondItem="ASZ-g3-XMV" secondAttribute="bottom" constant="70" id="xPk-i7-opA"/>
@@ -220,20 +226,20 @@
                                 <exclude reference="43l-Ws-6Rh"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="xPk-i7-opA"/>
-                                <exclude reference="57u-Ls-Hy5"/>
-                                <exclude reference="dKK-El-OJL"/>
-                                <exclude reference="eF3-rJ-Kit"/>
-                                <exclude reference="phI-g3-m6o"/>
-                                <exclude reference="H05-QZ-oTv"/>
-                                <exclude reference="JAs-LT-Eyv"/>
-                                <exclude reference="3Rz-Mo-CRl"/>
-                                <exclude reference="bzh-WS-fJu"/>
+                                <exclude reference="Qn6-sP-kWw"/>
+                                <exclude reference="zxm-Hn-FVA"/>
                                 <exclude reference="FhZ-w4-BpP"/>
                                 <exclude reference="PXM-cE-lRv"/>
                                 <exclude reference="mGe-iV-Tfl"/>
-                                <exclude reference="Qn6-sP-kWw"/>
-                                <exclude reference="zxm-Hn-FVA"/>
+                                <exclude reference="3Rz-Mo-CRl"/>
+                                <exclude reference="bzh-WS-fJu"/>
+                                <exclude reference="57u-Ls-Hy5"/>
+                                <exclude reference="H05-QZ-oTv"/>
+                                <exclude reference="JAs-LT-Eyv"/>
+                                <exclude reference="dKK-El-OJL"/>
+                                <exclude reference="eF3-rJ-Kit"/>
+                                <exclude reference="phI-g3-m6o"/>
+                                <exclude reference="xPk-i7-opA"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -247,27 +253,27 @@
                                 <include reference="43l-Ws-6Rh"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="xPk-i7-opA"/>
-                                <include reference="57u-Ls-Hy5"/>
-                                <include reference="dKK-El-OJL"/>
-                                <include reference="eF3-rJ-Kit"/>
-                                <include reference="phI-g3-m6o"/>
-                                <include reference="H05-QZ-oTv"/>
-                                <include reference="JAs-LT-Eyv"/>
-                                <include reference="3Rz-Mo-CRl"/>
-                                <include reference="bzh-WS-fJu"/>
+                                <include reference="Qn6-sP-kWw"/>
+                                <include reference="zxm-Hn-FVA"/>
                                 <include reference="FhZ-w4-BpP"/>
                                 <include reference="PXM-cE-lRv"/>
                                 <include reference="mGe-iV-Tfl"/>
-                                <include reference="Qn6-sP-kWw"/>
-                                <include reference="zxm-Hn-FVA"/>
+                                <include reference="3Rz-Mo-CRl"/>
+                                <include reference="bzh-WS-fJu"/>
+                                <include reference="57u-Ls-Hy5"/>
+                                <include reference="H05-QZ-oTv"/>
+                                <include reference="JAs-LT-Eyv"/>
+                                <include reference="dKK-El-OJL"/>
+                                <include reference="eF3-rJ-Kit"/>
+                                <include reference="phI-g3-m6o"/>
+                                <include reference="xPk-i7-opA"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaE-bc-gJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="1382"/>
+            <point key="canvasLocation" x="1644" y="1381.2593703148427"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0AK-a4-zAH">
