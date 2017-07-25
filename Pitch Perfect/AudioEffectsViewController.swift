@@ -77,12 +77,9 @@ class PlaySoundsViewController: UIViewController {
     func audioEffect(_ effect: String, pitch: Float) {
         stopPlayback()
         
-        let playerNode1 = AVAudioPlayerNode()
-        let playerNode2 = AVAudioPlayerNode()
-        var mixerToggle = false
+        let playNode = AVAudioPlayerNode()
         
-        playerNode1.volume = 1
-        playerNode2.volume = 1
+        playNode.volume = 1
         
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
         
@@ -90,8 +87,7 @@ class PlaySoundsViewController: UIViewController {
         
         try! audioFile.read(into: buffer)
         
-        audioEngine.attach(playerNode1)
-        audioEngine.attach(playerNode2)
+        audioEngine.attach(playNode)
         
         let changePitchEffect = AVAudioUnitTimePitch()
         let reverbEffect = AVAudioUnitReverb()
@@ -102,57 +98,36 @@ class PlaySoundsViewController: UIViewController {
             changePitchEffect.pitch = pitch
             audioEngine.attach(changePitchEffect)
             
-            connectToAudio(playerNode: playerNode1, effect: changePitchEffect, buffer: buffer)
+            connectToAudio(playerNode: playNode, effect: changePitchEffect, buffer: buffer)
         case "reverb":
             reverbEffect.loadFactoryPreset(.largeRoom2)
             reverbEffect.wetDryMix = 80
             
             audioEngine.attach(reverbEffect)
             
-            connectToAudio(playerNode: playerNode1, effect: reverbEffect, buffer: buffer)
+            connectToAudio(playerNode: playNode, effect: reverbEffect, buffer: buffer)
         case "echo":
             delayEffect.delayTime = 1.5
             delayEffect.feedback = 20
             
             audioEngine.attach(delayEffect)
             
-            connectToAudio(playerNode: playerNode1, effect: delayEffect, buffer: buffer)
+            connectToAudio(playerNode: playNode, effect: delayEffect, buffer: buffer)
         case "mixer":
-            mixerToggle = true
             changePitchEffect.pitch = pitch
+            changePitchEffect.rate = 0.5  // adding slow playback speed.
             audioEngine.attach(changePitchEffect)
             
-            reverbEffect.loadFactoryPreset(.largeRoom2)
-            reverbEffect.wetDryMix = 80
-            
-            audioEngine.attach(reverbEffect)
-            
-            connectToAudio(playerNode: playerNode1, effect: changePitchEffect, buffer: buffer)
-            connectToAudio(playerNode: playerNode2, effect: reverbEffect, buffer: buffer)
+            connectToAudio(playerNode: playNode, effect: changePitchEffect, buffer: buffer)
         default: break
         }
         
-        if mixerToggle == true {
-            playerNode1.volume = 0.5
-            playerNode2.volume = 0.5
+        playNode.scheduleBuffer(buffer, at: nil, completionHandler: nil)
             
-            playerNode1.scheduleBuffer(buffer, at: nil, completionHandler: nil)
-            playerNode2.scheduleBuffer(buffer, at: nil, completionHandler: nil)
+        try! audioEngine.start()
             
-            try! audioEngine.start()
-            
-            audioEngine.prepare()
-            playerNode1.play()
-            playerNode2.play()
-
-        } else {
-            playerNode1.scheduleBuffer(buffer, at: nil, completionHandler: nil)
-            
-            try! audioEngine.start()
-            
-            audioEngine.prepare()
-            playerNode1.play()
-        }
+        audioEngine.prepare()
+        playNode.play()
     }
     
     func connectToAudio(playerNode: AVAudioPlayerNode, effect: AnyObject, buffer: AVAudioPCMBuffer) {
